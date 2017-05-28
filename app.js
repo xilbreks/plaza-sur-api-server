@@ -30,7 +30,10 @@ app.use(function(req, res, next) {
 // ===============================================
 // Ruta de prueba
 app.get('/', function(req, res) {
-    res.send('bienvenido al mundo del api :v');
+  var msg = {
+    msg : "bienvenido al mundo del api :v"
+  };
+  res.send(JSON.stringify(msg));
 });
 
 // API ROUTES -------------------
