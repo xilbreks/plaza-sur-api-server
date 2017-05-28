@@ -127,7 +127,7 @@ app.use('/api', apiRoutes);
 
 
 // =======================
-// start the server ======
+// Iniciar el servidor ======
 // =======================
 app.listen(port);
 console.log('Se inicio el servidor en el puerto ' + port);
