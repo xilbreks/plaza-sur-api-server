@@ -1,12 +1,13 @@
+'use strict'
 // ===============================================
 // Importamos paquetes que necesitamos ===========
 // ===============================================
 var express     = require('express');
 var app         = express();
 var bodyParser  = require('body-parser');
-var morgan      = require('morgan');
+var morgan      = require('morgan'); ///// LOG
 var jwt         = require('jsonwebtoken'); 
-
+var path 	= require('path');
 // ===============================================
 // Configuracion =================================
 // ===============================================
@@ -16,6 +17,7 @@ app.set('superSecret', 'llaveParaFirmar');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use('/cocoro', express.static(path.join(__dirname + '/scr')));
 
 // Permitimos acceso a todos otros servidores (Solo debe permitirse en fase de Desarrollo)
 app.use(function(req, res, next) {
@@ -29,13 +31,32 @@ app.use(function(req, res, next) {
 // Rutas =========================================
 // ===============================================
 // Ruta de prueba
-app.get('/', function(req, res) {
+app.get('/:id', function(req, res) {
   var msg = {
-    msg : "bienvenido al mundo del api :v"
+    msg : "bienvenido al mundo del api :v",
+    datos : req.query.id,
+    datos2 : req.params.id
   };
+
   res.send(JSON.stringify(msg));
 });
 
+app.get('/products',function(req, res){
+	res.send(JSON.stringify('jajaja salu2'));
+})
+
+app.post('/post',function(req,res){
+	res.send('holis')
+})
+
+app.put('/put', function(req,res){
+	const name = req.body.produc.name
+	var max=25
+	if(name.length>max)
+	res.send(403,'esto es un put es anti calebs \n')
+	else 
+	res.send(200,'jjojojoj')
+})
 // API ROUTES -------------------
 /*
 // Tomamos una instancia del router para nuestra rutas de api

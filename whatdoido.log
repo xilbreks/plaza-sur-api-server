@@ -1,0 +1,6 @@
+Red-Green-Refractor
+
+GET localhost:3000/api/v1/category  => arr[obj]		GrouRead
+GET localhost:3000/api/v1/category/1 => obj		UnitRead
+POST localhost:3000/api/v1/category(body)  => obj	Create
+PUT localhost:3000/api/v1/category/1(body) => objmod	Update
