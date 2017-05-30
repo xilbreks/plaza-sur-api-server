@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
 // Ruta de prueba
 app.get('/:id', function(req, res) {
   var msg = {
-    msg : "bienvenido al mundo del api :v",
+    msg : "bienvenido al mundo del api :v modified by yayo",
     datos : req.query.id,
     datos2 : req.params.id
   };
